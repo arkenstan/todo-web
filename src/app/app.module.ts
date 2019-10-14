@@ -9,10 +9,14 @@ import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { CoreModule } from '@core/core.module';
+import { SplashModule } from '@app/splash/splash.module';
+
 @NgModule({
 	declarations: [ AppComponent ],
 	imports: [
 		BrowserModule,
+		SplashModule,
 		AppRoutingModule,
 		StoreModule.forRoot(reducers, {
 			metaReducers,
@@ -22,7 +26,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 			}
 		}),
 		EffectsModule.forRoot([ AppEffects ]),
-		BrowserAnimationsModule
+		BrowserAnimationsModule,
+		CoreModule
 	],
 	providers: [],
 	bootstrap: [ AppComponent ]

@@ -9,29 +9,33 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class LoginEffects {
-  constructor(
-    private actions$: Actions,
-    private loginService: LoginService,
-    private router: Router
-  ) {}
+	constructor(
+		private actions$: Actions,
+		private loginService: LoginService,
+		private router: Router
+	) {}
 
-  login$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(LoginPageActions.login.type),
-      map((action: LoginPageActions.LoginPageActionsUnion) => action.payload),
-      exhaustMap(authCred => this.loginService.logIn(authCred)),
-      map(user => LoginApiActions.loginSuccess({ user })),
-      catchError(error => of(LoginApiActions.loginFailure({ error })))
-    )
-  );
+	login$ = createEffect(() =>
+		this.actions$.pipe(
+			ofType(LoginPageActions.login.type),
+			map((action: LoginPageActions.LoginPageActionsUnion) => action.payload),
+			exhaustMap((authCred) => this.loginService.logIn(authCred)),
+			map((user) => LoginApiActions.loginSuccess({ user })),
+			catchError((error) => of(LoginApiActions.loginFailure({ error })))
+		)
+	);
 
-  loginSuccess$ = createEffect(
-    () =>
-      this.actions$.pipe(
-        ofType(LoginApiActions.loginSuccess.type),
-        tap(() => this.router.navigate(['']))
-      ),
-    { dispatch: false }
-  );
+	loginSuccess$ = createEffect(
+		() =>
+			this.actions$.pipe(
+				ofType(LoginApiActions.loginSuccess.type),
+				tap(() => this.router.navigate([ '' ]))
+			),
+		{ dispatch: false }
+	);
 
+	loginRedirect$ = createEffect(
+		() => this.actions$.pipe(ofType(LoginApiActions.loginRedirect.type)),
+		{ dispatch: false }
+	);
 }

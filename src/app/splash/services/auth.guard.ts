@@ -1,15 +1,29 @@
+import { map, take } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { CanActivate } from '@angular/router';
 import { Observable } from 'rxjs';
+import { Store, select } from '@ngrx/store';
+
+import * as fromSplash from '../reducers';
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return true;
-  }
-  
+	constructor(private store: Store<fromSplash.State>) {}
+
+	canActivate(): Observable<boolean> {
+		return this.store.pipe(
+			select(fromSplash.getLoggedIn),
+			map((authed) => {
+				console.log(authed);
+				if (!authed) {
+					// this.store.dispatch()
+					return false;
+				}
+				return true;
+			}),
+			take(1)
+		);
+	}
 }
