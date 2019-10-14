@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { LoginApiActions } from '../actions';
-import { User } from '../models/User.model';
+import { User } from '../models/user.model';
 
 export const loginApiFeatureKey = 'loginApi';
 

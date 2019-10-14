@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
-
+import {
+  MatButtonModule,
+  MatInputModule,
+  MatFormFieldModule,
+  MatIconModule
+} from '@angular/material';
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule
-  ]
+  exports: [MatButtonModule, MatInputModule, MatFormFieldModule, MatIconModule]
 })
-export class MaterialModule { }
+export class MaterialModule {}

@@ -1,5 +1,5 @@
 import { createAction, props, union } from '@ngrx/store';
-import { User } from '../models/User.model';
+import { User } from '../models/user.model';
 
 export const loginSuccess = createAction('[Login/API] Login Api Success', props<{ user: User }>());
 

@@ -1,6 +1,5 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { LoginPageActions, LoginApiActions } from '../actions';
-import { state } from '@angular/animations';
 
 export const loginPageFeatureKey = 'loginPage';
 export interface State {

@@ -1,0 +1,16 @@
+<div class="form-wrapper" [formGroup]="loginForm">
+  <div class="header">
+    Login
+  </div>
+  <div class="content">
+    <mat-form-field>
+      <input matInput placeholder="E-mail" formControlName="email" type="email" />
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Password" formControlName="password" type="password" />
+    </mat-form-field>
+  </div>
+  <div class="actions">
+    <button mat-raised-button color="primary">Login</button>
+  </div>
+</div>

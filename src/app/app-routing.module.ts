@@ -1,11 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from '@app/splash/services/auth.guard';
 
-
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: '',
+    loadChildren: '@app/landing/landing.module.ts#LandingModule',
+    canActivate: [AuthGuard]
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
