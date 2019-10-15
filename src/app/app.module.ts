@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducers, metaReducers } from './reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effects';
@@ -13,23 +14,24 @@ import { CoreModule } from '@core/core.module';
 import { SplashModule } from '@app/splash/splash.module';
 
 @NgModule({
-	declarations: [ AppComponent ],
-	imports: [
-		BrowserModule,
-		SplashModule,
-		AppRoutingModule,
-		StoreModule.forRoot(reducers, {
-			metaReducers,
-			runtimeChecks: {
-				strictStateImmutability: true,
-				strictActionImmutability: true
-			}
-		}),
-		EffectsModule.forRoot([ AppEffects ]),
-		BrowserAnimationsModule,
-		CoreModule
-	],
-	providers: [],
-	bootstrap: [ AppComponent ]
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    SplashModule,
+    AppRoutingModule,
+    StoreModule.forRoot(reducers, {
+      metaReducers,
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true
+      }
+    }),
+    StoreDevtoolsModule.instrument({ name: 'NgRx Book Store App' }),
+    EffectsModule.forRoot([AppEffects]),
+    BrowserAnimationsModule,
+    CoreModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

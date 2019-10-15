@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { LoginCredentials } from '../../models/user.model';
 
@@ -12,7 +12,7 @@ export class LoginFormComponent implements OnInit {
     email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required]
   });
-  submitted = new EventEmitter<LoginCredentials>();
+  @Output() submitted = new EventEmitter<LoginCredentials>();
 
   constructor(private fb: FormBuilder) {}
 
