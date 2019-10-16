@@ -9,9 +9,11 @@ import * as fromSplash from './reducers';
 import { LoginEffects } from './effects/login.effects';
 import { LoginPageComponent } from './containers/login-page/login-page.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
+import { RegisterFormComponent } from './components/register-form/register-form.component';
+import { RegisterPageComponent } from './containers/register-page/register-page.component';
 
 @NgModule({
-  declarations: [LoginPageComponent, LoginFormComponent],
+  declarations: [LoginPageComponent, LoginFormComponent, RegisterFormComponent, RegisterPageComponent],
   imports: [
     SharedModule,
     SplashRoutingModule,
