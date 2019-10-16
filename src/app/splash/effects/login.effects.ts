@@ -21,7 +21,10 @@ export class LoginEffects {
       map((action: LoginPageActions.LoginPageActionsUnion) => action.payload),
       exhaustMap(authCred => this.loginService.logIn(authCred)),
       map(user => LoginApiActions.loginSuccess({ user })),
-      catchError(error => of(LoginApiActions.loginFailure({ error })))
+      catchError(error => {
+        console.log(error);
+        return of(LoginApiActions.loginFailure({ error }));
+      })
     )
   );
 

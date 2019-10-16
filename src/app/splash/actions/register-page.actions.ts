@@ -1,14 +1,11 @@
-import { Action } from '@ngrx/store';
+import { createAction, props, union } from '@ngrx/store';
+import { RegisterData } from '../models/user.model';
 
-export enum RegisterPageActionTypes {
-  LoadRegisterPages = '[RegisterPage] Load RegisterPages',
-  
-  
-}
+export const register = createAction(
+  '[Register/Page] Register',
+  props<{ payload: RegisterData }>()
+);
 
-export class LoadRegisterPages implements Action {
-  readonly type = RegisterPageActionTypes.LoadRegisterPages;
-}
+const all = union({ register });
 
-
-export type RegisterPageActions = LoadRegisterPages;
+export type RegisterPageActionsUnion = typeof all;

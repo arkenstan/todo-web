@@ -1,14 +1,15 @@
-import { Action } from '@ngrx/store';
+import { createAction, union, props } from '@ngrx/store';
+import { User } from '../models/user.model';
 
-export enum RegisterApiActionTypes {
-  LoadRegisterApis = '[RegisterApi] Load RegisterApis',
-  
-  
-}
+export const registerSuccess = createAction(
+  '[Register/API] Register success',
+  props<{ user: User }>()
+);
+export const registerFailure = createAction(
+  '[Register/API] register failure',
+  props<{ error: any }>()
+);
 
-export class LoadRegisterApis implements Action {
-  readonly type = RegisterApiActionTypes.LoadRegisterApis;
-}
+const all = union({ registerSuccess, registerFailure });
 
-
-export type RegisterApiActions = LoadRegisterApis;
+export type RegisterApiActionsUnion = typeof all;

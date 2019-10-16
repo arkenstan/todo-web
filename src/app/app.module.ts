@@ -22,8 +22,8 @@ import { SplashModule } from '@app/splash/splash.module';
     StoreModule.forRoot(reducers, {
       metaReducers,
       runtimeChecks: {
-        strictStateImmutability: true,
-        strictActionImmutability: true
+        strictStateImmutability: false,
+        strictActionImmutability: false
       }
     }),
     StoreDevtoolsModule.instrument({ name: 'NgRx Book Store App' }),

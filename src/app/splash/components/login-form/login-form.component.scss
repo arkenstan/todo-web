@@ -1,0 +1,5 @@
+@import 'layouts/form-wrapper';
+
+.form-wrapper {
+  @extend %form-wrapper;
+}
