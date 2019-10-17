@@ -5,10 +5,19 @@ import { LandingMaterial } from '@shared/material/material.module';
 import { LandingRoutingModule } from './landing-routing.module';
 import { MainComponent } from './containers/main/main.component';
 import { StoreModule } from '@ngrx/store';
-import * as fromLanding from './reducers';
+import { EffectsModule } from '@ngrx/effects';
+
+import { reducers, landingFeatureKey } from './reducers';
+import { ListEffects } from './effects/list.effects';
 
 @NgModule({
-  declarations: [MainComponent],
-  imports: [SharedModule, LandingRoutingModule, LandingMaterial, StoreModule.forFeature(fromLanding.landingFeatureKey, fromLanding.reducers, { metaReducers: fromLanding.metaReducers })]
+	declarations: [ MainComponent ],
+	imports: [
+		SharedModule,
+		LandingRoutingModule,
+		LandingMaterial,
+		StoreModule.forFeature(landingFeatureKey, reducers),
+		EffectsModule.forFeature([ ListEffects ])
+	]
 })
 export class LandingModule {}

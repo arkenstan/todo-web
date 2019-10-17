@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
-import { exhaustMap, map, catchError } from 'rxjs/operators';
+import { exhaustMap, map, catchError, mergeMap, switchMap } from 'rxjs/operators';
 import { ListPageActions, ListApiActions } from '../actions';
 
 import { ListService } from '../services/list.service';
@@ -22,8 +22,7 @@ export class ListEffects {
 	listCreate$ = createEffect(() =>
 		this.actions$.pipe(
 			ofType(ListPageActions.createList.type),
-			map((action: ListPageActions.ListPageActionsUnion) => action.listName),
-			exhaustMap((listName) => this.listService.createList(listName)),
+			switchMap(({ listName }) => this.listService.createList(listName)),
 			map((res) => ListApiActions.listCreateSuccess({ list: res.data })),
 			catchError((error) => of(ListApiActions.listCreateFailure({ error })))
 		)
