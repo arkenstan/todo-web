@@ -1,0 +1,6 @@
+@import 'layouts/form-wrapper';
+
+.form-wrapper {
+  margin-top: 10px;
+  @extend %form-wrapper;
+}

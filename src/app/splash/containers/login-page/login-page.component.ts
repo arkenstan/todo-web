@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 
 import { LoginCredentials } from './../../models/user.model';
 import * as fromSplash from '../../reducers';
-import { LoginPageActions } from '../../actions';
+import { LoginPageActions, LoginApiActions } from '../../actions';
 
 @Component({
   selector: 'app-login-page',
@@ -13,10 +13,12 @@ import { LoginPageActions } from '../../actions';
 export class LoginPageComponent implements OnInit {
   constructor(private store: Store<fromSplash.State>) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.store.dispatch(LoginApiActions.loginShot());
+  }
 
   onSubmit(credentials: LoginCredentials) {
-    let temp = { payload: credentials };
+    const temp = { payload: credentials };
     this.store.dispatch(LoginPageActions.login({ ...temp }));
   }
 }

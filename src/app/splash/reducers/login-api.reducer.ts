@@ -14,7 +14,7 @@ export const initialState: State = {
 
 const loginApiReducer = createReducer(
 	initialState,
-	on(LoginApiActions.loginSuccess, (state) => ({ ...state, user: state.user }))
+	on(LoginApiActions.loginSuccess, (state, {user}) => ({ ...state, user }))
 );
 
 export function reducer(state, action): State {

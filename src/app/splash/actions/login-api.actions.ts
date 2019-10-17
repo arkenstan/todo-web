@@ -5,8 +5,10 @@ export const loginSuccess = createAction('[Login/API] Login Api Success', props<
 
 export const loginFailure = createAction('[Login/API] Login Api Failure', props<{ error: any }>());
 
+export const loginShot = createAction('[Login/API] Login Shot');
+
 export const loginRedirect = createAction('[Login/API] Login Redirect');
 
-const all = union({ loginSuccess, loginFailure, loginRedirect });
+const all = union({ loginSuccess, loginFailure, loginShot, loginRedirect });
 
 export type LoginApiActionsUnion = typeof all;

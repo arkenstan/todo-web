@@ -19,8 +19,20 @@ export class LoginEffects {
     this.actions$.pipe(
       ofType(LoginPageActions.login.type),
       map((action: LoginPageActions.LoginPageActionsUnion) => action.payload),
-      exhaustMap(authCred => this.loginService.logIn(authCred)),
-      map(user => LoginApiActions.loginSuccess({ user })),
+      exhaustMap(authCred => this.loginService.logIn({ ...authCred, strategy: 'local' })),
+      map(user => LoginApiActions.loginSuccess({ user: user.user })),
+      catchError(error => {
+        console.log(error);
+        return of(LoginApiActions.loginFailure({ error }));
+      })
+    )
+  );
+
+  loginShot$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(LoginApiActions.loginShot.type),
+      exhaustMap(() => this.loginService.logIn()),
+      map(user => LoginApiActions.loginSuccess({ user: user.user })),
       catchError(error => {
         console.log(error);
         return of(LoginApiActions.loginFailure({ error }));

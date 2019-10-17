@@ -1,0 +1,16 @@
+%todo-wrapper {
+  width: 60%;
+  max-height: 100%;
+  height: auto;
+  border: 1px solid #000;
+  max-width: 320px;
+  .header {
+    padding: 5px;
+  }
+  .list-selector {
+    padding: 5px;
+  }
+  .task-container {
+    padding: 5px;
+  }
+}
