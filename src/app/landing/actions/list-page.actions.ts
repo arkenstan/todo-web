@@ -1,9 +1,8 @@
 import { createAction, props, union } from '@ngrx/store';
-import { List } from '../models/list.model.ts';
 
 export const loadLists = createAction('[Lists/Page] Load lists');
-export const createList = createAction('[Lists/Page] Create List', props<{ payload: List }>());
+export const createList = createAction('[Lists/Page] Create List', props<{ listName: string }>());
 
-const all = union({ loadLists, createList });
+const all = union({ createList, loadLists });
 
 export type ListPageActionsUnion = typeof all;
