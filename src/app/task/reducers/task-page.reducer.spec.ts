@@ -1,6 +1,6 @@
-import { reducer, initialState } from './list-page.reducer';
+import { reducer, initialState } from './task-page.reducer';
 
-describe('ListPage Reducer', () => {
+describe('TaskPage Reducer', () => {
   describe('an unknown action', () => {
     it('should return the previous state', () => {
       const action = {} as any;

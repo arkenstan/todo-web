@@ -1,6 +1,6 @@
-import { reducer, initialState } from './list-api.reducer';
+import { reducer, initialState } from './task-api.reducer';
 
-describe('ListApi Reducer', () => {
+describe('TaskApi Reducer', () => {
   describe('an unknown action', () => {
     it('should return the previous state', () => {
       const action = {} as any;
