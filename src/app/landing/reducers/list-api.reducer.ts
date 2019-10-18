@@ -1,6 +1,6 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
-import { ListApiActions } from '../actions';
+import { ListApiActions, ListPageActions } from '../actions';
 
 import { List } from '../models/list.model';
 
@@ -25,11 +25,18 @@ export const initialState: State = adapter.getInitialState({
 
 const ListApiReducer = createReducer(
 	initialState,
+	on(ListPageActions.selectList, (state, { listId }) => ({ ...state, selectedListId: listId })),
 	on(ListApiActions.listLoadSuccess, (state, { lists }) => {
 		return adapter.addMany(lists, state);
 	}),
 	on(ListApiActions.listCreateSuccess, (state, { list }) => {
 		return adapter.addOne(list, state);
+	}),
+	on(ListApiActions.listUpdateSuccess, (state, { list }) => {
+		return adapter.upsertOne(list, state);
+	}),
+	on(ListApiActions.listDeleteSuccess, (state, { list }) => {
+		return adapter.removeOne(list.listId, state);
 	})
 );
 

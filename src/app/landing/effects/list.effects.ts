@@ -27,4 +27,13 @@ export class ListEffects {
 			catchError((error) => of(ListApiActions.listCreateFailure({ error })))
 		)
 	);
+
+	updateList$ = createEffect(() =>
+		this.actions$.pipe(
+			ofType(ListPageActions.updateList.type),
+			switchMap(({ listId, list }) => this.listService.updateList(listId, list)),
+			map((list) => ListApiActions.listUpdateSuccess({ list })),
+			catchError((error) => of(ListApiActions.listUpdateFailure({ error })))
+		)
+	);
 }
