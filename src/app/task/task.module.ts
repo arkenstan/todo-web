@@ -1,19 +1,14 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { SharedModule } from '@shared/shared.module';
 
 import { TaskRoutingModule } from './task-routing.module';
 import { StoreModule } from '@ngrx/store';
-import * as fromTask from './reducers';
+import { taskFeatureKey, reducers } from './reducers';
 import { TaskPageComponent } from './containers/task-page/task-page.component';
 import { TaskItemComponent } from './components/task-item/task-item.component';
 
-
 @NgModule({
-  declarations: [TaskPageComponent, TaskItemComponent],
-  imports: [
-    CommonModule,
-    TaskRoutingModule,
-    StoreModule.forFeature(fromTask.taskFeatureKey, fromTask.reducers, { metaReducers: fromTask.metaReducers })
-  ]
+	declarations: [ TaskPageComponent, TaskItemComponent ],
+	imports: [ SharedModule, TaskRoutingModule, StoreModule.forFeature(taskFeatureKey, reducers) ]
 })
-export class TaskModule { }
+export class TaskModule {}
