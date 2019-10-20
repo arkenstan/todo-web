@@ -43,10 +43,22 @@ export const selectTaskApiState = createSelector(
 	selectTaskState,
 	(state: TaskState) => state.taskApi
 );
-export const selectTaskApiSelectedTask = createSelector(
+export const selectTaskApiSelectedTaskId = createSelector(
 	selectTaskApiState,
 	fromTaskApi.getSelectedTask
 );
 export const selectTaskApiTotalTasks = createSelector(selectTaskApiState, fromTaskApi.getTaskTotal);
 export const selectTaskApiTasks = createSelector(selectTaskApiState, fromTaskApi.getTasks);
 export const selectTaskApiTaskIds = createSelector(selectTaskApiState, fromTaskApi.getTaskIds);
+export const selectTaskApiAllTask = createSelector(selectTaskApiState, fromTaskApi.getAllTasks);
+export const selectInCompletedTask = createSelector(selectTaskApiAllTask, (tasks) =>
+	tasks.filter((task) => !task.completed)
+);
+export const selectCompletedTask = createSelector(selectTaskApiAllTask, (tasks) =>
+	tasks.filter((task) => task.completed)
+);
+export const selectCurrentTask = createSelector(
+	selectTaskApiTasks,
+	selectTaskApiSelectedTaskId,
+	(tasks, taskId) => tasks[taskId]
+);

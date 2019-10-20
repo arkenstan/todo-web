@@ -9,7 +9,7 @@ export interface State extends EntityState<Task> {
 }
 
 export function selectTaskId(a: Task): string {
-	return a.taskId;
+	return a._id;
 }
 
 export const adapter: EntityAdapter<Task> = createEntityAdapter<Task>({
@@ -28,10 +28,10 @@ const featureReducer = createReducer(
 		return adapter.upsertOne(task, state);
 	}),
 	on(TaskApiActions.loadTasksSuccess, (state, { tasks }) => {
-		return adapter.addMany(tasks, state);
+		return adapter.addAll(tasks, state);
 	}),
 	on(TaskApiActions.deleteTaskSuccess, (state, { task }) => {
-		return adapter.removeOne(task.taskId, state);
+		return adapter.removeOne(task.refId, state);
 	})
 );
 
@@ -41,7 +41,8 @@ export function reducer(state: State | undefined, action: Action) {
 
 export const getSelectedTask = (state: State) => state.selectedTaskId;
 
-const { selectEntities, selectIds, selectTotal } = adapter.getSelectors();
+const { selectEntities, selectAll, selectIds, selectTotal } = adapter.getSelectors();
 export const getTasks = selectEntities;
 export const getTaskIds = selectIds;
+export const getAllTasks = selectAll;
 export const getTaskTotal = selectTotal;

@@ -1,0 +1,11 @@
+<h2 class="mat-h2">Create Task</h2>
+<mat-dialog-content [formGroup]="taskForm">
+  <mat-form-field>
+    <input matInput placeholder="Task Name" formControlName="content" />
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-raised-button (click)="createTask()" color="primary">Create</button>
+</mat-dialog-actions>

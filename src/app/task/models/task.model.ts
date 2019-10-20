@@ -1,10 +1,18 @@
 export interface Task {
-	taskId: string;
-	completed: boolean;
-	title: string;
-	owner: string;
+  _id: string;
+  refId: string;
+  completed: boolean;
+  content: string;
+  createdBy: string;
+  createdAt: Date;
+  updateAt: Date;
+}
+
+export interface UpdateTask {
+  content?: string;
+  completed?: boolean;
 }
 
 export interface CreateTask {
-	title: string;
+  content: string;
 }

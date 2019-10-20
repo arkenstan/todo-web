@@ -12,8 +12,8 @@ export class TaskService {
 
 	constructor(private feathers: FeathersService) {}
 
-	loadTasks(): Observable<any> {
-		return (this.feathers.service(this.SERVICE_NAME) as any).watch().find();
+	loadTasks() {
+		return this.feathers.service(this.SERVICE_NAME).watch().find({});
 	}
 
 	addNewTask(task: CreateTask): Promise<any> {

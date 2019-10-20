@@ -5,7 +5,12 @@ import {
   MatFormFieldModule,
   MatIconModule,
   MatSelectModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatToolbarModule,
+  MatMenuModule,
+  MatTabsModule,
+  MatExpansionModule,
+  MatDialogModule
 } from '@angular/material';
 
 @NgModule({
@@ -14,6 +19,13 @@ import {
 export class MaterialModule {}
 
 @NgModule({
-  exports: [MatSelectModule, MatCheckboxModule]
+  exports: [
+    MatCheckboxModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatTabsModule,
+    MatExpansionModule,
+    MatDialogModule
+  ]
 })
-export class LandingMaterial {}
+export class TaskMaterial {}

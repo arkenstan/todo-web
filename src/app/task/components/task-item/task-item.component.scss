@@ -1,0 +1,6 @@
+@import 'layouts/task';
+
+.task-card {
+  box-sizing: border-box;
+  @extend %task-card;
+}

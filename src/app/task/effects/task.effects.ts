@@ -13,8 +13,8 @@ export class TaskEffects {
 	loadTasks$ = createEffect(() =>
 		this.actions$.pipe(
 			ofType(TaskPageActions.loadTasks.type),
-			exhaustMap(() => this.taskService.loadTasks()),
-			map((res) => TaskApiActions.loadTasksSuccess({ tasks: res.data })),
+			switchMap(() => this.taskService.loadTasks()),
+			map((res: any) => TaskApiActions.loadTasksSuccess({ tasks: res.data })),
 			catchError((error) => of(TaskApiActions.loadTasksFailure({ error })))
 		)
 	);
@@ -25,6 +25,24 @@ export class TaskEffects {
 			switchMap(({ task }) => this.taskService.addNewTask(task)),
 			map((task) => TaskApiActions.createTaskSuccess({ task })),
 			catchError((error) => of(TaskApiActions.createTaskFailure({ error })))
+		)
+	);
+
+	updateTask$ = createEffect(() =>
+		this.actions$.pipe(
+			ofType(TaskPageActions.updateTask.type),
+			switchMap(({ taskId, task }) => this.taskService.updateTask(taskId, task)),
+			map((task) => TaskApiActions.updateTaskSuccess({ task })),
+			catchError((error) => of(TaskApiActions.updateTaskFailure({ error })))
+		)
+	);
+
+	removeTask$ = createEffect(() =>
+		this.actions$.pipe(
+			ofType(TaskPageActions.removeTask.type),
+			switchMap(({ taskId }) => this.taskService.deleteTask(taskId)),
+			map((task) => TaskApiActions.deleteTaskSuccess({ task })),
+			catchError((error) => of(TaskApiActions.deleteTaskFailure({ error })))
 		)
 	);
 }

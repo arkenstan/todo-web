@@ -1,1 +1,42 @@
-<p>task-page works!</p>
+<div class="task-wrapper">
+  <div class="main-container">
+    <mat-toolbar color="primary">
+      <span>Todo</span>
+      <span class="spacer"></span>
+      <button mat-icon-button (click)="openDialog()">
+        <mat-icon>add</mat-icon>
+      </button>
+      <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item><mat-icon>logout</mat-icon> Logout</button>
+      </mat-menu>
+    </mat-toolbar>
+
+    <mat-tab-group mat-stretch-tabs>
+      <mat-tab label="TODO">
+        <div class="task-container">
+          <mat-accordion>
+            <app-task-item
+              *ngFor="let task of inCompletedTasks | async"
+              [task]="task"
+              (taskStatusChange)="updateTask($event)"
+              (removed)="deleteTask($event)"
+            ></app-task-item>
+          </mat-accordion>
+        </div>
+      </mat-tab>
+      <mat-tab label="Completed">
+        <div class="task-container">
+          <mat-accordion>
+            <app-task-item
+              *ngFor="let task of completedTasks | async"
+              [task]="task"
+              (taskStatusChange)="updateTask($event)"
+              (removed)="deleteTask($event)"
+            ></app-task-item>
+          </mat-accordion>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
