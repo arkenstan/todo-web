@@ -1,16 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 
-import { CreateTaskDialogComponent } from '@app/task/components/create-task-dialog/create-task-dialog.component';
 import * as fromTask from '@app/task/reducers';
 import { TaskPageActions } from '@app/task/actions';
-import { Task, CreateTask, UpdateTask } from '@app/task/models/task.model';
+import { UpdateTask } from '@app/task/models/task.model';
 import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-task-page',
   templateUrl: './task-page.component.html',
-  styleUrls: ['./task-page.component.scss']
+  styleUrls: ['./task-page.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class TaskPageComponent implements OnInit {
   hasError = this.store.pipe(select(fromTask.selectTaskPageError));
@@ -31,18 +31,5 @@ export class TaskPageComponent implements OnInit {
   }
   deleteTask(taskId: string) {
     this.store.dispatch(TaskPageActions.removeTask({ taskId }));
-  }
-  createTask(task: CreateTask) {
-    this.store.dispatch(TaskPageActions.createTasks({ task }));
-  }
-
-  openDialog(): void {
-    const dialogRef = this.dialog.open(CreateTaskDialogComponent, { data: null });
-    const globRef = this;
-    dialogRef.afterClosed().subscribe(result => {
-      if (result.isSubmit) {
-        globRef.store.dispatch(TaskPageActions.createTasks({ task: result.data }));
-      }
-    });
   }
 }

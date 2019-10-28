@@ -1,0 +1,13 @@
+.app-wrapper {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  overflow: auto;
+  display: flex;
+  flex-flow: column;
+  .app-content {
+    flex: 1 1 auto;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+}

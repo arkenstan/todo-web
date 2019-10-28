@@ -10,7 +10,6 @@ export class LoginService {
   constructor(private feathers: FeathersService) {}
 
   logIn(credentials?: LoginCredentials): Promise<any> {
-    console.log('TCL: LoginService -> constructor -> credentials', credentials);
     return this.feathers.authenticate(credentials);
   }
 

@@ -11,10 +11,9 @@ import { TaskEffects } from './effects/task.effects';
 
 import { TaskPageComponent } from './containers/task-page/task-page.component';
 import { TaskItemComponent } from './components/task-item/task-item.component';
-import { CreateTaskDialogComponent } from './components/create-task-dialog/create-task-dialog.component';
 
 @NgModule({
-  declarations: [TaskPageComponent, TaskItemComponent, CreateTaskDialogComponent],
+  declarations: [TaskPageComponent, TaskItemComponent],
   imports: [
     SharedModule,
     TaskMaterial,
@@ -22,6 +21,6 @@ import { CreateTaskDialogComponent } from './components/create-task-dialog/creat
     StoreModule.forFeature(taskFeatureKey, reducers),
     EffectsModule.forFeature([TaskEffects])
   ],
-  entryComponents: [CreateTaskDialogComponent]
+  entryComponents: []
 })
 export class TaskModule {}

@@ -14,18 +14,19 @@ import {
 } from '@angular/material';
 
 @NgModule({
-  exports: [MatButtonModule, MatInputModule, MatFormFieldModule, MatIconModule]
+  exports: [
+    MatButtonModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatDialogModule
+  ]
 })
 export class MaterialModule {}
 
 @NgModule({
-  exports: [
-    MatCheckboxModule,
-    MatToolbarModule,
-    MatMenuModule,
-    MatTabsModule,
-    MatExpansionModule,
-    MatDialogModule
-  ]
+  exports: [MatCheckboxModule, MatToolbarModule, MatMenuModule, MatTabsModule, MatExpansionModule]
 })
 export class TaskMaterial {}

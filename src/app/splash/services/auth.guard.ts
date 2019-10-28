@@ -17,7 +17,6 @@ export class AuthGuard implements CanActivate {
     return this.store.pipe(
       select(fromSplash.getLoggedIn),
       map(authed => {
-        console.log(authed);
         if (!authed) {
           this.store.dispatch(LoginApiActions.loginRedirect());
           return false;

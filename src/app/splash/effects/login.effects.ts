@@ -22,7 +22,6 @@ export class LoginEffects {
       exhaustMap(authCred => this.loginService.logIn({ ...authCred, strategy: 'local' })),
       map(user => LoginApiActions.loginSuccess({ user: user.user })),
       catchError(error => {
-        console.log(error);
         return of(LoginApiActions.loginFailure({ error }));
       })
     )
@@ -34,7 +33,6 @@ export class LoginEffects {
       exhaustMap(() => this.loginService.logIn()),
       map(user => LoginApiActions.loginSuccess({ user: user.user })),
       catchError(error => {
-        console.log(error);
         return of(LoginApiActions.loginFailure({ error }));
       })
     )
