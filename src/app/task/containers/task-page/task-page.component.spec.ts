@@ -1,5 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { TaskModule } from '@app/task/task.module';
+import { TaskItemComponent } from '@app/task/components/task-item/task-item.component';
 import { TaskPageComponent } from './task-page.component';
 
 describe('TaskPageComponent', () => {
@@ -8,9 +10,9 @@ describe('TaskPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TaskPageComponent ]
-    })
-    .compileComponents();
+      providers: [TaskModule],
+      declarations: [TaskItemComponent, TaskPageComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LoginFormComponent } from './login-form.component';
+import { SplashModule } from '@app/splash/splash.module';
 
 describe('LoginFormComponent', () => {
   let component: LoginFormComponent;
@@ -8,9 +9,9 @@ describe('LoginFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LoginFormComponent ]
-    })
-    .compileComponents();
+      providers: [SplashModule],
+      declarations: [LoginFormComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
