@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SplashModule } from '@app/splash/splash.module';
+import { SharedModule } from '@shared/shared.module';
 import { RegisterFormComponent } from './register-form.component';
 
 describe('RegisterFormComponent', () => {
@@ -9,7 +9,7 @@ describe('RegisterFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      providers: [SplashModule],
+      imports: [SharedModule],
       declarations: [RegisterFormComponent]
     }).compileComponents();
   }));

@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LoginFormComponent } from './login-form.component';
-import { SplashModule } from '@app/splash/splash.module';
+import { SharedModule } from '@shared/shared.module';
 
 describe('LoginFormComponent', () => {
   let component: LoginFormComponent;
@@ -9,7 +9,7 @@ describe('LoginFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      providers: [SplashModule],
+      imports: [SharedModule],
       declarations: [LoginFormComponent]
     }).compileComponents();
   }));

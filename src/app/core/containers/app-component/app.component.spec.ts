@@ -1,14 +1,16 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
-import { CoreModule } from '@core/core.module';
+import { RouterModule } from '@angular/router';
+import { SharedModule } from '@shared/shared.module';
+import { MaterialModule } from '@shared/material/material.module';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      providers: [CoreModule],
-      imports: [RouterTestingModule],
+      providers: [],
+      imports: [RouterTestingModule, SharedModule, RouterModule, MaterialModule],
       declarations: [AppComponent]
     }).compileComponents();
   }));
