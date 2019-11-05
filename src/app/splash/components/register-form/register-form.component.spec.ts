@@ -1,3 +1,5 @@
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SharedModule } from '@shared/shared.module';
@@ -9,7 +11,7 @@ describe('RegisterFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [SharedModule],
+      imports: [BrowserModule, BrowserAnimationsModule, SharedModule],
       declarations: [RegisterFormComponent]
     }).compileComponents();
   }));

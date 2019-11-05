@@ -2,7 +2,6 @@ import { Store, select } from '@ngrx/store';
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material';
 
-import { LoginPageActions } from '@app/splash/actions';
 import { ToolbarActions } from '@core/actions';
 import * as fromSplash from '@app/splash/reducers';
 import * as fromRoot from '@app/reducers';

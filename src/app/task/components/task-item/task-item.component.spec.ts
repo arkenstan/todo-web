@@ -1,6 +1,9 @@
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TaskModule } from '@app/task/task.module';
+import { SharedModule } from '@shared/shared.module';
+import { TaskMaterial } from '@shared/material/material.module';
 import { TaskItemComponent } from './task-item.component';
 
 describe('TaskItemComponent', () => {
@@ -9,7 +12,7 @@ describe('TaskItemComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      providers: [TaskModule],
+      imports: [BrowserModule, BrowserAnimationsModule, SharedModule, TaskMaterial],
       declarations: [TaskItemComponent]
     }).compileComponents();
   }));
