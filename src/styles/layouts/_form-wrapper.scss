@@ -2,9 +2,11 @@
   display: flex;
   flex-flow: column;
   align-items: center;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
-  padding: 10px;
+  .header,
+  .content,
+  .actions {
+    width: 100%;
+  }
   .header {
     padding: 3px 8px;
   }
@@ -13,12 +15,8 @@
     flex-flow: column nowrap;
     padding: 5px;
   }
-  .footer {
+  .actions {
     display: flex;
     flex-flow: column nowrap;
-    padding: 5px;
-    button {
-      margin: 5px;
-    }
   }
 }
