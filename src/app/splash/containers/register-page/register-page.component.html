@@ -1,1 +1,12 @@
-<app-register-form (submitted)="registerUser($event)"></app-register-form>
+<div class="login-page-wrapper">
+  <div class="content">
+    <h1 class="mat-h1">Simple TODO</h1>
+    <app-register-form (submitted)="registerUser($event)"></app-register-form>
+    <div class="actions">
+      <h4 class="mat-h4">OR</h4>
+      <button [routerLink]="['/register']" mat-raised-button color="accent">
+        Already a member? Login.
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,8 @@
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { SharedModule } from '@shared/shared.module';
 import { RegisterFormComponent } from './register-form.component';
 
 describe('RegisterFormComponent', () => {
@@ -8,9 +11,9 @@ describe('RegisterFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RegisterFormComponent ]
-    })
-    .compileComponents();
+      imports: [BrowserModule, BrowserAnimationsModule, SharedModule],
+      declarations: [RegisterFormComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

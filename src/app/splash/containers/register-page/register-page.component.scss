@@ -1,0 +1,24 @@
+.login-page-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  .content {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    flex-flow: column nowrap;
+    .actions {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      margin: 5px 0;
+      button {
+        width: 100%;
+      }
+    }
+  }
+}

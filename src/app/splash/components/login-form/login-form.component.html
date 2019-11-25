@@ -1,16 +1,28 @@
-<div class="form-wrapper" [formGroup]="loginForm">
-  <div class="header">
-    Login
+<form class="form-container" [formGroup]="loginForm" (submit)="loginAction()">
+  <div class="form-wrapper">
+    <div class="header">
+      Login
+    </div>
+    <div class="content">
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="E-mail"
+          formControlName="email"
+          type="email"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="Password"
+          formControlName="password"
+          type="password"
+        />
+      </mat-form-field>
+    </div>
+    <div class="actions">
+      <button type="submit" mat-raised-button color="primary">Login</button>
+    </div>
   </div>
-  <div class="content">
-    <mat-form-field>
-      <input matInput placeholder="E-mail" formControlName="email" type="email" />
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="Password" formControlName="password" type="password" />
-    </mat-form-field>
-  </div>
-  <div class="actions">
-    <button (click)="loginAction()" mat-raised-button color="primary">Login</button>
-  </div>
-</div>
+</form>
