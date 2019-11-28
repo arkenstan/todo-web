@@ -1,7 +1,7 @@
-import { Action, createReducer, on } from '@ngrx/store';
-import { LoginPageActions, LoginApiActions } from '../actions';
+import { Action, createReducer, on } from "@ngrx/store";
+import { LoginPageActions, LoginApiActions } from "../actions";
 
-export const loginPageFeatureKey = 'loginPage';
+export const loginPageFeatureKey = "loginPage";
 export interface State {
   error: any | null;
   pending: boolean | false;
@@ -13,9 +13,22 @@ export const initialState: State = {
 
 const loginPageReducer = createReducer(
   initialState,
-  on(LoginPageActions.login, state => ({ ...state, pending: true, error: null })),
-  on(LoginApiActions.loginFailure, (state, { error }) => ({ ...state, pending: false, error })),
-  on(LoginApiActions.loginSuccess, state => ({ ...state, pending: false, error: null }))
+  on(LoginPageActions.login, state => ({
+    ...state,
+    pending: true,
+    error: null
+  })),
+  on(LoginApiActions.loginFailure, (state, { error }) => ({
+    ...state,
+    pending: false,
+    error
+  })),
+  on(LoginApiActions.loginSuccess, state => ({
+    ...state,
+    pending: false,
+    error: null
+  })),
+  on(LoginPageActions.logout, state => initialState)
 );
 
 export function reducer(state: State | undefined, action: Action) {

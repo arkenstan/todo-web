@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { of } from 'rxjs';
-import { exhaustMap, map, catchError, tap } from 'rxjs/operators';
+import { Injectable } from "@angular/core";
+import { Actions, createEffect, ofType } from "@ngrx/effects";
+import { of } from "rxjs";
+import { exhaustMap, map, catchError, tap } from "rxjs/operators";
 
-import { LoginPageActions, LoginApiActions } from '../actions';
-import { LoginService } from '../services/login.service';
-import { Router } from '@angular/router';
+import { LoginPageActions, LoginApiActions } from "../actions";
+import { LoginService } from "../services/login.service";
+import { Router } from "@angular/router";
 
 @Injectable()
 export class LoginEffects {
@@ -15,11 +15,23 @@ export class LoginEffects {
     private router: Router
   ) {}
 
+  logout$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(LoginPageActions.logout.type),
+        exhaustMap(() => this.loginService.logOut()),
+        tap(() => this.router.navigate(["/login"]))
+      ),
+    { dispatch: false }
+  );
+
   login$ = createEffect(() =>
     this.actions$.pipe(
       ofType(LoginPageActions.login.type),
       map((action: LoginPageActions.LoginPageActionsUnion) => action.payload),
-      exhaustMap(authCred => this.loginService.logIn({ ...authCred, strategy: 'local' })),
+      exhaustMap(authCred =>
+        this.loginService.logIn({ ...authCred, strategy: "local" })
+      ),
       map(user => LoginApiActions.loginSuccess({ user: user.user })),
       catchError(error => {
         return of(LoginApiActions.loginFailure({ error }));
@@ -42,7 +54,7 @@ export class LoginEffects {
     () =>
       this.actions$.pipe(
         ofType(LoginApiActions.loginSuccess.type),
-        tap(() => this.router.navigate(['']))
+        tap(() => this.router.navigate(["/"]))
       ),
     { dispatch: false }
   );
@@ -51,7 +63,7 @@ export class LoginEffects {
     () =>
       this.actions$.pipe(
         ofType(LoginApiActions.loginRedirect.type),
-        tap(() => this.router.navigate(['login']))
+        tap(() => this.router.navigate(["/login"]))
       ),
     { dispatch: false }
   );

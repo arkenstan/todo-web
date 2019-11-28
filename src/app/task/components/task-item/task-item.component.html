@@ -1,23 +1,32 @@
-<mat-expansion-panel>
-  <mat-expansion-panel-header>
+<mat-card>
+  <span class="card-title">
     {{ task.content }}
-  </mat-expansion-panel-header>
-  <div class="detail-section">
-    <h3 class="mat-h3">Created On:</h3>
-    <span class="createdDate"> {{ task.createdAt | date }} </span>
-  </div>
-  <mat-action-row>
-    <button mat-raised-button (click)="removeTask()" color="accent">Delete</button>
-    <button
-      mat-raised-button
-      *ngIf="!task.completed"
-      (click)="markComplete('done')"
-      color="primary"
-    >
-      Mark Complete
-    </button>
-    <button mat-raised-button *ngIf="task.completed" (click)="markComplete('undo')" color="primary">
-      Re-open
-    </button>
-  </mat-action-row>
-</mat-expansion-panel>
+  </span>
+  <span class="spacer"></span>
+  <button
+    mat-icon-button
+    (click)="removeTask()"
+    matTooltip="Delete Task"
+    color="accent"
+  >
+    <mat-icon>delete</mat-icon>
+  </button>
+  <button
+    mat-icon-button
+    *ngIf="!task.completed"
+    matTooltip="Mark Complete"
+    (click)="markComplete('done')"
+    color="primary"
+  >
+    <mat-icon>done</mat-icon>
+  </button>
+  <button
+    mat-icon-button
+    *ngIf="task.completed"
+    matTooltip="Re-open tasks"
+    (click)="markComplete('undo')"
+    color="primary"
+  >
+    <mat-icon>undo</mat-icon>
+  </button>
+</mat-card>

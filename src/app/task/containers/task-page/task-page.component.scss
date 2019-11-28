@@ -1,14 +1,11 @@
 @import "base/basics";
+@import "layouts/task-section";
 .task-wrapper {
   width: 100%;
   height: 100%;
   box-sizing: border-box;
-  mat-tab-group {
-    height: 100%;
+  overflow: auto;
+  .tasks-section {
+    @extend %task-section;
   }
-  // .task-container {
-  //   overflow-x: hidden;
-  //   overflow-y: auto;
-  //   // box-sizing: border-box;
-  // }
 }

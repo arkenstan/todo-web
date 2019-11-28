@@ -1,31 +1,29 @@
 <div class="task-wrapper">
-  <mat-tab-group mat-stretch-tabs>
-    <mat-tab label="TODO">
-      <div class="task-container">
-        <mat-accordion>
-          <app-task-item
-            *ngFor="let task of inCompletedTasks | async"
-            [task]="task"
-            (taskStatusChange)="updateTask($event)"
-            (removed)="deleteTask($event)"
-          ></app-task-item>
-        </mat-accordion>
-        <h2 class="page-caption">
-          Use + button is taskbar to add new task
-        </h2>
-      </div>
-    </mat-tab>
-    <mat-tab label="Completed">
-      <div class="task-container">
-        <mat-accordion>
-          <app-task-item
-            *ngFor="let task of completedTasks | async"
-            [task]="task"
-            (taskStatusChange)="updateTask($event)"
-            (removed)="deleteTask($event)"
-          ></app-task-item>
-        </mat-accordion>
-      </div>
-    </mat-tab>
-  </mat-tab-group>
+  <div class="tasks-section">
+    <div class="heading">
+      Tasks to complete
+    </div>
+    <div class="list-container">
+      <app-task-item
+        *ngFor="let task of inCompletedTasks | async"
+        [task]="task"
+        (taskStatusChange)="updateTask($event)"
+        (removed)="deleteTask($event)"
+      ></app-task-item>
+    </div>
+  </div>
+
+  <div class="tasks-section">
+    <div class="heading">
+      Completed Tasks
+    </div>
+    <div class="list-container">
+      <app-task-item
+        *ngFor="let task of completedTasks | async"
+        [task]="task"
+        (taskStatusChange)="updateTask($event)"
+        (removed)="deleteTask($event)"
+      ></app-task-item>
+    </div>
+  </div>
 </div>

@@ -1,26 +1,10 @@
 %task-card {
   display: flex;
-  flex-flow: column nowrap;
+  flex-flow: row nowrap;
+  align-items: center;
   margin: 10px;
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 5px;
-  // border: 1px solid #000;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  .task-card-header {
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    padding: 10px;
-  }
-
-  .task-card-details {
-    &.active {
-      display: flex;
-    }
-    display: none;
-    padding: 10px;
-    .details-section {
-      display: flex;
-      flex-flow: column;
-    }
-  }
 }
