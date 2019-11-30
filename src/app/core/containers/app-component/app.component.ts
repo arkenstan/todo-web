@@ -22,7 +22,7 @@ export class AppComponent {
   ) {}
 
   logoutUser() {
-    this.store.dispatch(LoginPageActions.logout());
+    this.store.dispatch(LoginPageActions.logout({ payload: null }));
   }
 
   openDialog(): void {

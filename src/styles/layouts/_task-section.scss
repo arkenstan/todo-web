@@ -1,6 +1,20 @@
+@import "base/screens";
 %task-section {
   padding: 10px;
   .heading {
     padding: 10px;
+  }
+  .list-container {
+    display: flex;
+    flex-flow: row wrap;
+    @include mobile {
+      flex-flow: column nowrap;
+    }
+    @include tablet {
+      flex-flow: row wrap;
+    }
+    @include desktop {
+      flex-flow: row wrap;
+    }
   }
 }

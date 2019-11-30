@@ -6,7 +6,10 @@ export const login = createAction(
   props<{ payload: LoginCredentials }>()
 );
 
-export const logout = createAction("[Login/Page] Logout");
+export const logout = createAction(
+  "[Login/Page] Logout",
+  props<{ payload: null }>()
+);
 
 const all = union({ login, logout });
 

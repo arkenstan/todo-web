@@ -1,7 +1,21 @@
+@import "base/screens";
+
+$min-width-lg: 300px;
+
 %task-card {
+  box-sizing: border-box;
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
+  @include mobile {
+    min-width: auto;
+  }
+  @include tablet {
+    min-width: $min-width-lg;
+  }
+  @include desktop {
+    min-width: $min-width-lg;
+  }
   margin: 10px;
   padding: 10px;
   border: 1px solid rgba(0, 0, 0, 0.2);
